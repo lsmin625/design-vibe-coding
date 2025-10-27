@@ -9,3 +9,5 @@
 ### src
 - **[bootstrap:](./src/bootstrap/)** Bootstrap 적용 디자인 실습
 - **[skax-vibe-vue:](/src/skax-vibe-vue/)** Vue 프로젝트 실습
+
+![서비스 기획자를 위한 vibe coding](./img/intro.png)
