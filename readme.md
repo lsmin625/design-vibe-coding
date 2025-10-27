@@ -7,7 +7,7 @@
 - **[prompts](./resources/prompts/):** LLM 프롬프트 목록
 
 ### src
-- **[bootstrap:](./sources/bootstrap/)** Bootstrap 적용 디자인 실습
-- **[skax-vibe-vue:](/sources/skax-vibe-vue/)** Vue 프로젝트 실습
+- **[bootstrap:](./codes/bootstrap/)** Bootstrap 적용 디자인 실습
+- **[skax-vibe-vue:](/codes/skax-vibe-vue/)** Vue 프로젝트 실습
 
-![서비스 기획자를 위한 vibe coding](./img/intro.png)
+![서비스 기획자를 위한 vibe coding](./images/intro.png)
