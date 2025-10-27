@@ -3,11 +3,9 @@
 ## 프로젝트 디렉토리 구조
 
 ### text
-
-**- files:** 교재 보충 정보
-**- prompts:** LLM 프롬프트 목록
+- **files:** 교재 보충 정보
+- **prompts:** LLM 프롬프트 목록
 
 ### src
-
-**- bootstrap:** Bootstrap 적용 디자인 실습
-**- skax-vibe-vue:** Vue 프로젝트 실습
+- **bootstrap:** Bootstrap 적용 디자인 실습
+- **skax-vibe-vue:** Vue 프로젝트 실습
