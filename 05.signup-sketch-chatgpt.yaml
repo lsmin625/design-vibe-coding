@@ -1,0 +1,204 @@
+page:
+  id: signup_page
+  title: "회원가입"
+  description: "사용자 계정을 생성하는 회원가입 화면. 모바일 우선 반응형."
+  tech_stack:
+    - html5
+    - bootstrap_5_3_cdn
+  viewport:
+    min_height: "100vh"
+    background: "bg-light"        # Bootstrap bg-light (연한 회색)
+    align: "vertical_center"      # 수직 중앙
+    justify: "horizontal_center"  # 수평 중앙
+    layout: "flexbox_fullscreen"  # body.d-flex.align-items-center + container.d-flex.justify-content-center
+
+layout:
+  container:
+    type: "container"
+    align_items: "center"
+    justify_content: "center"
+    children:
+      - section
+
+section:
+  id: auth_card_wrapper
+  max_width: "420px"
+  width: "100%"
+  children:
+    - heading
+    - card
+
+heading:
+  type: "text"
+  tag: "h1"
+  text: "회원가입"
+  align: "center"
+  style:
+    font_weight: "bold"
+    margin_bottom: "1.5rem"   # mb-4
+    font_size: "1.5rem ~ 2rem (부트스트랩 h1 기본 값 사용)"
+
+card:
+  type: "card"
+  style:
+    border: "none"            # border-0
+    shadow: "shadow-sm"
+    padding: "1.5rem"         # p-4
+    radius: "default bootstrap card radius"
+    background: "#ffffff"
+  children:
+    - form
+
+form:
+  id: signup_form
+  method: "POST"
+  action: "/signup"           # 실제 라우팅은 앱에 맞게 교체 예정
+  validation: "html5_required"
+  fields:
+    - name_field
+    - email_field
+    - password_field
+    - password_confirm_field
+    - birthdate_field
+    - phone_field
+  actions:
+    - submit_button
+    - login_link_block
+
+name_field:
+  component: "floating_input"
+  label: "이름"
+  input:
+    id: "name"
+    type: "text"
+    placeholder: "홍길동"      # 플로팅 라벨에서 placeholder는 필수 (부트스트랩 규칙)
+    required: true
+  spacing_bottom: "1rem"       # mb-3
+
+email_field:
+  component: "floating_input"
+  label: "이메일"
+  input:
+    id: "email"
+    type: "email"
+    placeholder: "name@example.com"
+    required: true
+  spacing_bottom: "1rem"       # mb-3
+
+password_field:
+  component: "floating_input"
+  label: "비밀번호"
+  input:
+    id: "password"
+    type: "password"
+    placeholder: "비밀번호"
+    required: true
+  spacing_bottom: "1rem"       # mb-3
+  helper_text: null            # 추후 "8자 이상" 등 정책 문구 주입 가능
+
+password_confirm_field:
+  component: "floating_input"
+  label: "비밀번호 확인"
+  input:
+    id: "passwordConfirm"
+    type: "password"
+    placeholder: "비밀번호 확인"
+    required: true
+  spacing_bottom: "1rem"       # mb-3
+  interaction_rule: "must_match(password)"
+
+birthdate_field:
+  component: "floating_input"
+  label: "생년월일"
+  input:
+    id: "birthdate"
+    type: "date"
+    placeholder: "YYYY-MM-DD"  # date input은 시각적으로 placeholder 안 나타날 수 있음. 라벨은 떠 있음.
+    required: true
+  spacing_bottom: "1rem"       # mb-3
+
+phone_field:
+  component: "floating_input"
+  label: "전화번호"
+  input:
+    id: "phone"
+    type: "tel"
+    placeholder: "010-0000-0000"
+    required: true
+  spacing_bottom: "1.5rem"     # mb-4
+  pattern_hint: "휴대폰 번호 형식"
+
+submit_button:
+  type: "button.primary"
+  role: "submit"
+  text: "회원가입"
+  full_width: true             # d-grid + btn-lg
+  size: "lg"
+  spacing_bottom: "1rem"       # mb-3
+
+login_link_block:
+  type: "text_block"
+  align: "center"
+  font_size: "small"
+  color: "muted"
+  text_prefix: "이미 계정이 있으신가요?"
+  link:
+    text: "로그인"
+    href: "/login"
+    style:
+      color: "link-primary"
+      decoration: "none"
+      font_weight: "semibold"
+
+accessibility:
+  aria:
+    - each_input_uses_label_for_matches_id: true
+    - form_fields_marked_required_via_html5: true
+  focus_states: "bootstrap_default_outline"
+  mobile_keyboard:
+    email: "email keyboard on mobile"
+    tel: "numeric dialpad on mobile"
+    password: "hidden input"
+    date: "native date picker"
+
+responsive_behavior:
+  mobile_first: true
+  breakpoints:
+    xs:
+      card_width: "100%"
+      padding: "1.5rem"
+      vertical_center: true
+    sm:
+      card_width: "400px ~ 420px max"
+    md:
+      same_as_sm
+    lg:
+      same_as_sm
+  notes:
+    - "body가 flex로 전체 높이에서 수직 중앙 정렬되므로 작은 화면에서도 폼이 화면 가운데에 고정"
+    - "추가 Grid는 필요 없고 단일 column 형태 유지"
+    - "추후 데스크톱 전용 우측 홍보배너(브랜드 소개, 일러스트 등)를 추가 가능하도록 section을 wrapper 레벨에서 확장 가능하게 설계"
+
+brand_voice:
+  tone: "신뢰 가능, 깔끔, 과장 없는 온보딩"
+  style_keywords:
+    - minimal
+    - modern
+    - soft_shadow
+    - card_centered
+    - low_distraction
+
+future_extensions:
+  password_strength_meter:
+    type: "inline_indicator"
+    trigger: "onChange(password)"
+    state_colors: ["weak", "medium", "strong"]
+  tos_checkbox:
+    label: "서비스 이용약관 및 개인정보 처리방침에 동의합니다."
+    required: true
+  sms_verification:
+    flow:
+      step1: "전화번호 입력"
+      step2: "인증코드 전송"
+      step3: "코드 확인"
+    ui_hint: "phone_field 우측에 '인증요청' 버튼 추가 후 로딩 상태 표시"
