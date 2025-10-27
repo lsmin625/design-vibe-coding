@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>회원가입</title>
+
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous" />
+
+  <style>
+    body {
+      min-height: 100vh;
+    }
+
+    .auth-card {
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .form-floating>label {
+      color: #6c757d;
+    }
+  </style>
+</head>
+
+<body class="bg-light d-flex align-items-center">
+  <main class="container d-flex justify-content-center">
+    <section class="auth-card">
+      <h1 class="text-center mb-4 fw-bold">회원가입</h1>
+
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <form>
+            <!-- 이름 -->
+            <div class="form-floating mb-3">
+              <input type="text" class="form-control" id="name" placeholder="홍길동" required />
+              <label for="name">이름</label>
+            </div>
+
+            <!-- 이메일 -->
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="email" placeholder="name@example.com" required />
+              <label for="email">이메일</label>
+            </div>
+
+            <!-- 비밀번호 -->
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="password" placeholder="비밀번호" required />
+              <label for="password">비밀번호</label>
+            </div>
+
+            <!-- 비밀번호 확인 -->
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="passwordConfirm" placeholder="비밀번호 확인" required />
+              <label for="passwordConfirm">비밀번호 확인</label>
+            </div>
+
+            <!-- 생년월일 -->
+            <div class="form-floating mb-3">
+              <input type="date" class="form-control" id="birthdate" placeholder="생년월일" required />
+              <label for="birthdate">생년월일</label>
+            </div>
+
+            <!-- 전화번호 -->
+            <div class="form-floating mb-4">
+              <input type="tel" class="form-control" id="phone" placeholder="010-0000-0000" required />
+              <label for="phone">전화번호</label>
+            </div>
+
+            <!-- 회원가입 버튼 -->
+            <div class="d-grid mb-3">
+              <button type="submit" class="btn btn-primary btn-lg">
+                회원가입
+              </button>
+            </div>
+
+            <!-- 로그인 링크 -->
+            <p class="text-center small text-muted mb-0">
+              이미 계정이 있으신가요?
+              <a href="/login" class="link-primary text-decoration-none fw-semibold">
+                로그인
+              </a>
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
