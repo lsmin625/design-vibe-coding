@@ -1,135 +1,177 @@
-# 
-# 스케치(Sketch) YAML 코드
-# 
-# 이 코드는 Bootstrap 5.3을 사용하여 회원가입 폼 페이지를 정의합니다.
-# Sketch는 YAML 구문을 사용하여 HTML/CSS 웹페이지 프로토타입을 빠르게 생성합니다.
-#
-
-# 페이지 메타데이터
-title: 회원가입
-imports:
-  # Bootstrap 5.3 CSS CDN
-  - 'https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css'
-
-# 페이지 루트 요소 (HTML의 <body> 태그에 해당)
-root:
-  tag: body
-  class: 'bg-light d-flex align-items-center'
+page:
+  id: signup-page
+  title: "회원가입"
+  tech_stack:
+    - html
+    - bootstrap-5.3-cdn
   style:
-    min-height: 100vh
-  children:
-    # 메인 컨텐츠 영역
-    - tag: main
-      class: 'container d-flex justify-content-center'
-      children:
-        # 인증 카드 섹션 (HTML의 .auth-card 스타일에 해당)
-        - tag: section
+    background: "bg-light"
+    layout:
+      type: "full-viewport-center"
+      description: "뷰포트 전체 높이를 사용해 폼 카드가 세로/가로 중앙 정렬"
+      classes:
+        - "min-vh-100"
+        - "d-flex"
+        - "align-items-center"
+        - "justify-content-center"
+    responsive: true
+    notes:
+      - "모바일 우선"
+      - "max-width를 제한해서 너무 넓지 않게"
+  container:
+    type: "card"
+    classes:
+      - "card"
+      - "shadow-sm"
+      - "p-4"
+      - "bg-white"
+      - "rounded-3"
+    width:
+      max: "400px"
+    header:
+      title: "회원가입"
+      classes:
+        - "text-center"
+        - "mb-4"
+        - "fw-semibold"
+        - "fs-4"
+    form:
+      id: signup-form
+      method: post
+      action: "/signup"
+      validation: "browser-default + 추가 커스텀 가능"
+      fields:
+        - id: fullName
+          label: "이름"
+          type: text
+          placeholder: "홍길동"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-3"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+            label_behavior: "floating"
+          required: true
+
+        - id: email
+          label: "이메일"
+          type: email
+          placeholder: "name@example.com"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-3"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+          help_text: "로그인 및 알림에 사용됩니다."
+          required: true
+
+        - id: password
+          label: "비밀번호"
+          type: password
+          placeholder: "비밀번호 입력"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-3"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+          required: true
+          rules:
+            - "8자 이상"
+            - "영문자 + 숫자 포함 권장"
+
+        - id: passwordConfirm
+          label: "비밀번호 확인"
+          type: password
+          placeholder: "비밀번호 다시 입력"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-3"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+          required: true
+          rules:
+            - "password와 일치해야 함"
+          ux:
+            realtime_check: true   # 프론트에서 동일성 체크 가능 의도
+
+        - id: birthDate
+          label: "생년월일"
+          type: date
+          placeholder: "YYYY-MM-DD"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-3"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+          required: false
+          notes:
+            - "HTML5 date input 사용"
+            - "모바일에서 native date picker 기대"
+
+        - id: phone
+          label: "전화번호"
+          type: tel
+          placeholder: "010-0000-0000"
+          bootstrap:
+            wrapper_classes:
+              - "form-floating"
+              - "mb-4"
+            input_classes:
+              - "form-control"
+              - "rounded-3"
+          required: false
+          pattern_hint: "하이픈 포함 형식 권장"
+      actions:
+        primary_button:
+          id: submitBtn
+          label: "회원가입"
+          type: submit
           style:
-            max-width: 420px
-            width: 100%
-          children:
-            # 페이지 제목
-            - tag: h1
-              class: 'text-center mb-4 fw-bold'
-              text: '회원가입'
-
-            # 회원가입 폼이 담긴 카드
-            - tag: div
-              class: 'card shadow-sm border-0'
-              children:
-                - tag: div
-                  class: 'card-body p-4'
-                  children:
-                    # 회원가입 폼
-                    - tag: form
-                      children:
-                        # --- 1. 이름 ---
-                        - component: form-floating
-                          class: 'mb-3'
-                          input:
-                            type: text
-                            id: name
-                            placeholder: '홍길동'
-                            required: true
-                          label:
-                            for: name
-                            text: '이름'
-
-                        # --- 2. 이메일 ---
-                        - component: form-floating
-                          class: 'mb-3'
-                          input:
-                            type: email
-                            id: email
-                            placeholder: 'name@example.com'
-                            required: true
-                          label:
-                            for: email
-                            text: '이메일'
-
-                        # --- 3. 비밀번호 ---
-                        - component: form-floating
-                          class: 'mb-3'
-                          input:
-                            type: password
-                            id: password
-                            placeholder: '비밀번호'
-                            required: true
-                          label:
-                            for: password
-                            text: '비밀번호'
-
-                        # --- 4. 비밀번호 확인 ---
-                        - component: form-floating
-                          class: 'mb-3'
-                          input:
-                            type: password
-                            id: passwordConfirm
-                            placeholder: '비밀번호 확인'
-                            required: true
-                          label:
-                            for: passwordConfirm
-                            text: '비밀번호 확인'
-
-                        # --- 5. 생년월일 ---
-                        - component: form-floating
-                          class: 'mb-3'
-                          input:
-                            type: date
-                            id: birthdate
-                            placeholder: '생년월일'
-                            required: true
-                          label:
-                            for: birthdate
-                            text: '생년월일'
-
-                        # --- 6. 전화번호 ---
-                        - component: form-floating
-                          class: 'mb-4'
-                          input:
-                            type: tel
-                            id: phone
-                            placeholder: '010-0000-0000'
-                            required: true
-                          label:
-                            for: phone
-                            text: '전화번호'
-
-                        # --- 7. 회원가입 버튼 ---
-                        - tag: div
-                          class: 'd-grid mb-3'
-                          children:
-                            - tag: button
-                              type: submit
-                              class: 'btn btn-primary btn-lg'
-                              text: '회원가입'
-
-                        # --- 8. 로그인 링크 ---
-                        - tag: p
-                          class: 'text-center small text-muted mb-0'
-                          text: '이미 계정이 있으신가요? ' # 링크 앞 텍스트
-                          children:
-                            - tag: a
-                              href: '/login'
-                              class: 'link-primary text-decoration-none fw-semibold'
-                              text: '로그인'
+            classes:
+              - "btn"
+              - "btn-primary"
+              - "w-100"
+              - "py-2"
+              - "rounded-3"
+          ux:
+            loading_state: true
+            disable_on_submit: true
+        secondary_link:
+          text: "이미 계정이 있으신가요? 로그인"
+          href: "/login"
+          align: "center"
+          classes:
+            - "d-block"
+            - "text-center"
+            - "mt-3"
+            - "text-decoration-none"
+            - "small"
+            - "text-muted"
+  accessibility:
+    aria:
+      - "각 input은 label과 연결 (for / id)"
+      - "에러 메시지는 aria-live='polite'로 후속 확장 가능"
+    contrast:
+      - "placeholder 대신 floating label 사용해서 접근성 향상"
+    keyboard:
+      - "Enter로 submit 가능"
+      - "탭 순서: 이름 → 이메일 → 비번 → 비번확인 → 생년월일 → 전화번호 → 제출"
+  cdn_requirements:
+    bootstrap_css: true
+    bootstrap_js_bundle: true
+    integrity_attributes: optional
+  notes_for_dev:
+    - "실제 구현 시 form 태그 안에 novalidate 여부 결정"
+    - "서버 검증 실패 시 각 필드 하단에 .invalid-feedback 삽입"
+    - "전화번호/생일은 선택값처럼 처리 가능하므로 required 아님"
+    - "카드 max-width는 sm 기준으로 100%, md 이상에서는 고정폭 유지"
