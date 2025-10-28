@@ -1,9 +1,9 @@
 <template>
   <div>
-    이곳에 내용이 들어갑니다.
+    <RouterView> </RouterView>
   </div>
 </template>
 
 <script setup>
-
+import { RouterView } from 'vue-router'
 </script>
